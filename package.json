@@ -1,0 +1,19 @@
+{
+  "name": "dyjj-server",
+  "version": "1.0.0",
+  "description": "dyjj",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjwangel/dyjj-server.git"
+  },
+  "author": "jjwangel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jjwangel/dyjj-server/issues"
+  },
+  "homepage": "https://github.com/jjwangel/dyjj-server#readme"
+}
