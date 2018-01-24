@@ -5,4 +5,4 @@
 const router = require('koa-router')();
 const common = require('../../controllers/common');
 
-module.exports = router.post('/VerifyFunction', {});
+module.exports = router.post('/VerifyFunction', common.verifyFunction);

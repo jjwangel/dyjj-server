@@ -5,4 +5,4 @@
 const router = require('koa-router')();
 const user = require('../../controllers/user');
 
-module.exports = router.post('/VerifyUser', {});
+module.exports = router.post('/VerifyUser', user.verifyUser);
