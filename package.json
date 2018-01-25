@@ -23,6 +23,7 @@
     "koa-logger": "^3.1.0",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",
+    "log4js": "^2.5.2",
     "mssql": "^4.1.0"
   }
 }

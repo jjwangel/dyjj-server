@@ -1,12 +1,15 @@
-const Mssql = require('./mssql-provide');
+const mssql = require('./mssql-provide');
 const dbConfig = require('../../../../config/db-config');
 
-const ufAccountDb = new Mssql(dbConfig.uf_account);
-const ufSystemDb = new Mssql(dbConfig.uf_system);
-const AppDb = new Mssql(dbConfig.application);
+const ufSystemDb = new mssql(dbConfig.uf_system);
+const AppDb = new mssql(dbConfig.application);
+
+const ConnectDB = async() => {
+  await Promise.all([ufSystemDb.connectDB(), AppDb.connectDB()]);
+};
 
 module.exports = {
-  ufAccountDb,
   ufSystemDb,
   AppDb,
+  ConnectDB,
 };

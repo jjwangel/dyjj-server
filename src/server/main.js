@@ -1,17 +1,19 @@
 const mssql = require('../server/models/db-provide/mssql');
+const config = require('../config/env-config')['sit'];
 
 
+/**
+ * @description 初始化服务端
+ * @author Michael Jian
+ */
+function initServer() {
 
-async function ConnectDB() {
-  await Promise.all([mssql.ufSystemDb.connectDB(), mssql.AppDb.connectDB(), mssql.ufAccountDb.connectDB()]);
-};
-
-function ConnectDB_() {
-  ConnectDB().then(() => {
-    console.log('connect success!!!');
-  }).catch((err) => {
-    console.log('connect err: %s', err);
-  })
+  mssql.ConnectDB()
+    .then(() => {
+      console.log("connect database success!");
+    }).catch((err) => {
+      console.error('connect database error %s', err);
+    })
 }
 
-ConnectDB_();
+initServer();
