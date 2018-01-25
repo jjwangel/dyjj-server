@@ -1,9 +1,9 @@
-module.exports.dbConfig = {
+module.exports = {
   uf_account: {
     user: 'sa',
     password: 'sasa',
     server: '127.0.0.1',
-    database: 'TEST',
+    database: 'UFDATA_102_2017',
     options: {
       // encrypt: true // Use this if you're on Windows Azure
     },
@@ -17,7 +17,7 @@ module.exports.dbConfig = {
     user: 'sa',
     password: 'sasa',
     server: '127.0.0.1',
-    database: 'CHI',
+    database: 'UFSystem',
     options: {
       // encrypt: true // Use this if you're on Windows Azure
     },
@@ -31,7 +31,7 @@ module.exports.dbConfig = {
     user: 'sa',
     password: 'sasa',
     server: '127.0.0.1',
-    database: 'CHI',
+    database: 'DYDEV',
     options: {
       // encrypt: true // Use this if you're on Windows Azure
     },

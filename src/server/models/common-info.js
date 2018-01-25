@@ -1,3 +1,5 @@
+const mssql = require('./db-provide/mssql');
+
 module.exports = {
   /**
    * @description 鉴别功能权限
