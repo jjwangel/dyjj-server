@@ -11,8 +11,9 @@ module.exports = {
   async getUfAccountInfo(ctx) {
     let bodyData = ctx.request.body;
     let fromData = {};
-
-    return await ufInfoService.getUfAccountInfo(fromData);
+    let result = {};
+    result = await ufInfoService.getUfAccountInfo(fromData);
+    ctx.body = result;
   },
 
   /**

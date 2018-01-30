@@ -1,7 +1,35 @@
-// const mssql = require('../server/models/db-provide/mssql');
-// const config = require('../config/env-config')['sit'];
+const Koa = require('koa');
+const path = require('path')
+const koaStatic = require('koa-static')
+const bodyParser = require('koa-bodyparser')
 
+const mssql = require('../server/models/db-provide/mssql');
+const envConfig = require('../config/env-config')['sit'];
+const routers = require('./routers');
 
+const logResMiddWare = require('./middleware/log-middleware');
+const tokenMiddWare=require('./middleware/token-middleware');
+
+const app = new Koa();
+
+// 配置ctx.body解析中间件
+app.use(bodyParser())
+
+// 配置静态资源加载中间件
+app.use(koaStatic(
+  path.join(__dirname , '../static')
+))
+
+//请求日志中间件
+app.use(logResMiddWare);
+
+//token验证中间件
+app.use(tokenMiddWare);
+
+// 初始化路由中间件
+app.use(routers.routes()).use(routers.allowedMethods());
+
+app.listen(envConfig.port);
 /**
  * @description 初始化服务端
  * @author Michael Jian
@@ -18,14 +46,4 @@
 
 // initServer();
 
-const Koa = require('koa');
-const app = new Koa();
-const logRes = require('./middleware/log-middleware');
 
-app.use(logRes);
-// response
-app.use(ctx => {
-  ctx.body = 'Hello Koa';
-});
-
-app.listen(3000);

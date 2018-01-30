@@ -8,11 +8,10 @@ module.exports = {
    */
   async getUfAccountInfo() {
     let result = {
-
+      retrun_code: '000000',
     };
 
     // 检索数据库返回账套数据。
-
     return result;
   },
 
