@@ -10,10 +10,10 @@ module.exports = async (ctx, next) => {
     await next();
     ms = new Date() - start;
     //记录响应日志
-    logUtil.logResponse(ctx, ms);
+    logUtil.logResponseWWW(ctx, ms);
   } catch (error) {
     ms = new Date() - start;
     //记录异常日志
-    logUtil.logError(ctx, error, ms);
+    logUtil.logErrorWWW(ctx, error, ms);
   }
 }
