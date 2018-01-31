@@ -1,8 +1,16 @@
+const CommonInfoModel = require('../models/common-info');
 
-const CommonInfoModel=require('../models/common-info');
+module.exports = {
+  async getSysInfo() {
+    const result = {};
+    try {
+      sysInfoResult = await CommonInfoModel.getSysInfo();
+    } catch (err) {
 
-module.exports={
-    /**
+    }
+    return result;
+  },
+  /**
    * @description 鉴别功能权限
    * @author Michael Jian
    * @param {any} fromData 数据来源

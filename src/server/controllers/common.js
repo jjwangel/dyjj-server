@@ -10,7 +10,10 @@ module.exports = {
    */
   async getUfAccountInfo(ctx) {
     let bodyData = ctx.request.body;
-    let fromData = {};
+    let fromData = {
+      retrun_code: bodyData.retrun_code,
+      token: '',
+    };
     let result = {};
     result = await ufInfoService.getUfAccountInfo(fromData);
     ctx.body = result;

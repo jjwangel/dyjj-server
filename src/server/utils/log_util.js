@@ -7,6 +7,12 @@ log4js.configure(log_config);
 const logUtil = {};
 const wwwErrLogger = log4js.getLogger('wwwErrLogger');
 const wwwResLogger = log4js.getLogger('wwwResLogger');
+const appErrLogger = log4js.getLogger('appErrLogger');
+const appLogger = log4js.getLogger('appLogger');
+
+logUtil.logErrorApp = appErrLogger;
+logUtil.logApp = appLogger;
+
 
 //封装错误日志
 logUtil.logErrorWWW = function (ctx, error, resTime) {
@@ -65,7 +71,7 @@ const formatError = function (ctx, err, resTime) {
 const formatReqLog = function (req, resTime) {
   let logText = new String();
   const method = req.method;
-  
+
   //访问方法
   logText += "request method: " + method + "\n";
   //请求原始地址

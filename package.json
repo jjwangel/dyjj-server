@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jjwangel/dyjj-server#readme",
   "dependencies": {
+    "jsonwebtoken": "^8.1.1",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-convert": "^1.2.0",

@@ -9,10 +9,18 @@ module.exports = {
    * @returns 返回账套数据
    */
   async getUfAccountInfo(fromData) {
-    let result = {};
+    let result = {
+      retrun_code: fromData.retrun_code,
+      uf_acct_list: {
+        default_acct_no: '',
+        list: [],
+      }
+
+    };
     try {
       let acctInfo = await ufInfoModel.getUfAccountInfo();
-      result.retrun_code = acctInfo.retrun_code;
+      let 
+      
     } catch (err) {
 
     }
