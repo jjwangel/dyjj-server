@@ -8,8 +8,8 @@ module.exports = {
    */
   async getSysInfo() {
     let result = {};
-
-    //读取公共参数表数据
+    let sql = 'select * from J_SynOpt';
+    result = await mssql.AppDb.getRequest().query(sql);
     return result;
   },
   /**

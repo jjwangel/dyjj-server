@@ -7,11 +7,9 @@ module.exports = {
    * @returns 返回账套数据
    */
   async getUfAccountInfo() {
-    let result = {
-      retrun_code: '000000',
-    };
-
-    // 检索数据库返回账套数据。
+    let result = {};
+    let sql = 'select a.cAcc_Id,a.cAcc_Name from UA_Account a';
+    result = await mssql.ufSystemDb.getRequest().query(sql);
     return result;
   },
 

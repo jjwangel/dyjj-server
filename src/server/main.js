@@ -29,21 +29,22 @@ app.use(tokenMiddWare);
 // 初始化路由中间件
 app.use(routers.routes()).use(routers.allowedMethods());
 
-app.listen(envConfig.port);
 /**
  * @description 初始化服务端
  * @author Michael Jian
  */
-// function initServer() {
+function initServer() {
 
-//   mssql.ConnectDB()
-//     .then(() => {
-//       console.log("connect database success!");
-//     }).catch((err) => {
-//       console.error('connect database error %s', err);
-//     })
-// }
+  mssql.ConnectDB()
+    .then(() => {
+      console.log("connect database success!");
+    }).catch((err) => {
+      console.error('connect database error %s', err);
+    })
+}
 
-// initServer();
+initServer();
+
+app.listen(envConfig.port);
 
 

@@ -15,16 +15,16 @@ var appLogPath = path.resolve(__dirname, "../logs/app/information/info");
 module.exports = {
   appenders:{
     wwwErrLogger:{
-      type: "console", //日志类型
+      type: "dateFile", //日志类型
       filename: wwwErrLogPath, //日志输出位置
       alwaysIncludePattern: true, //是否总是有后缀名
-      pattern: "-yyyy-MM-dd.log" //后缀，每天创建一个新的日志文件
+      pattern: "-yyyy-MM.log" //后缀，每天创建一个新的日志文件
     },
     wwwResLogger:{
-      type: "console",
+      type: "dateFile",
       filename: wwwResLogPath,
       alwaysIncludePattern: true,
-      pattern: "-yyyy-MM-dd.log" //后缀，每小时创建一个新的日志文件
+      pattern: "-yyyy-MM.log" //后缀，每小时创建一个新的日志文件
     },
     appErrLogger:{
       type: "console", //日志类型

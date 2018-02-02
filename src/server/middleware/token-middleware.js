@@ -23,7 +23,7 @@ module.exports = async (ctx, next) => {
 
   //url是否需要判断token，如果需要则数据必需为post过来的
   if (!noTokenURL.includes(req.originalUrl.trim())) {
-    token = req.body.token;
+    token = req.body.token || '';
     if (token === '') {
       result.retrun_code = 'SYS0004';
       return;

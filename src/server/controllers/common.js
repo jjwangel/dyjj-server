@@ -15,7 +15,8 @@ module.exports = {
       token: '',
     };
     let result = {};
-    result = await ufInfoService.getUfAccountInfo(fromData);
+    result = await commonInfoService.getSysInfo();
+    // result = await ufInfoService.getUfAccountInfo(fromData);
     ctx.body = result;
   },
 
