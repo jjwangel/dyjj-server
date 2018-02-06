@@ -1,4 +1,6 @@
 const ufInfoModel = require('../models/uf-info');
+const commonInfoModel = require('../models/common-info');
+const logUtil = require('../utils/log_util')
 
 module.exports = {
 
@@ -11,20 +13,42 @@ module.exports = {
   async getUfAccountInfo(fromData) {
     let result = {
       retrun_code: fromData.retrun_code,
-      uf_acct_list: {
+      token: fromData.token,
+      data: {
         default_acct_no: '',
-        list: [],
+        acct_list: [],
+      }
+    };
+    
+    try {
+      let [sysInfoResult, ufAcctResult] = await Promise.all([commonInfoModel.getSysInfo(), ufInfoModel.getUfAccountInfo()]);
+      let allowChangeAcct = false;
+      for (let item of sysInfoResult.recordset) {
+        switch (item['OptId']) {
+          case 3:
+            {
+              result.data.default_acct_no = item['Opt2'];
+              break;
+            }
+          case 4:
+            {
+              allowChangeAcct = (item['Opt2'] === '1' ? true : false);
+            }
+        }
       }
 
-    };
-    try {
-      let acctInfo = await ufInfoModel.getUfAccountInfo();
-      let 
-      
+      for (let item of ufAcctResult.recordset) {
+        result.data.acct_list.push({
+          disable: allowChangeAcct,
+          acct_no: item['cAcc_Id'],
+          acct_name: item['cAcc_Name'],
+        })
+      }
     } catch (err) {
-
+      result.retrun_code="SYS0001";
+      logUtil.logErrorApp.error(err);
     }
-
+    logUtil.logApp.info(result);
     return result;
   },
 
