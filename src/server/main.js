@@ -2,6 +2,7 @@ const Koa = require('koa');
 const path = require('path')
 const koaStatic = require('koa-static')
 const bodyParser = require('koa-bodyparser')
+const cors = require('koa2-cors');
 
 const mssql = require('../server/models/db-provide/mssql');
 const envConfig = require('../config/env-config')['sit'];
@@ -11,6 +12,9 @@ const logResMiddWare = require('./middleware/log-middleware');
 const tokenMiddWare=require('./middleware/token-middleware');
 
 const app = new Koa();
+
+//解决跨域问题
+app.use(cors());
 
 // 配置ctx.body解析中间件
 app.use(bodyParser())
