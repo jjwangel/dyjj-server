@@ -1,4 +1,6 @@
 const userInfoModel = require('../models/user-info');
+const ufInfoModel = require('../models/uf-info');
+const logUtil = require('../utils/log_util')
 
 module.exports = {
   /**
@@ -10,9 +12,12 @@ module.exports = {
   async verifyUser(fromData) {
     const result = {};
     try {
-      vefifyResult = await userInfoModel.verifyUser(fromData);
+      let [vefifyResult, accountInfo] = await Promise.all([userInfoModel.verifyUser(fromData), ufInfoModel.getAccountDetail(fromData)]);
+      
+      console.log(vefifyResult);
+      console.log(accountInfo);
     } catch (err) {
-
+      logUtil.logErrorApp.error(err);
     }
     return result;
   }

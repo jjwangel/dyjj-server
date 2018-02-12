@@ -11,7 +11,7 @@ module.exports = {
   async getUfAccountInfo(ctx) {
     let bodyData = ctx.request.body;
     let fromData = {
-      retrun_code: bodyData.retrun_code || '000000',
+      retrun_code:'000000',
       token: '',
     };
     let result = {};

@@ -9,7 +9,15 @@ module.exports = {
    */
   async verifyUser(ctx) {
     let bodyData = ctx.request.body;
-    let fromData = {};
-    return await userInfoService.verifyUser(fromData);
+    let fromData = {
+      retrun_code: '000000',
+      token: '',
+      user_acct: bodyData.user_acct,
+      user_pwd: bodyData.user_pwd,
+      uf_acct_no: bodyData.uf_acct_no,
+    };
+    let result = {};
+    result = await userInfoService.verifyUser(fromData);
+    ctx.body = result;
   }
 }

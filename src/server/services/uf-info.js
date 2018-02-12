@@ -48,7 +48,6 @@ module.exports = {
       result.retrun_code="SYS0001";
       logUtil.logErrorApp.error(err);
     }
-    logUtil.logApp.info(result);
     return result;
   },
 

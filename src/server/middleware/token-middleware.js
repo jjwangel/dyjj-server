@@ -1,7 +1,7 @@
 const util = require('../utils/util');
 const logUtil = require('../utils/log_util');
 
-const noTokenURL = ['/Common/GetUfAccountInfo'];
+const noTokenURL = ['/Common/GetUfAccountInfo','/User/VerifyUser'];
 
 module.exports = async (ctx, next) => {
   
